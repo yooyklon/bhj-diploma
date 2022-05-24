@@ -10,7 +10,7 @@ const createRequest = (options = {}) => {
     const url = new URL(options.url);
     let keys = Object.keys(options.data);
     for (let key of keys) {
-     url.searchParams.set(key, options.data[key]);
+      url.searchParams.set(key, options.data[key]);
     }
 
     xhr.open('GET', url);
@@ -20,7 +20,7 @@ const createRequest = (options = {}) => {
     let keys = Object.keys(options.data);
     
     for(let key of keys) {
-     formData.append(key, options.data[key]);
+      formData.append(key, options.data[key]);
     }
 
     xhr.open('POST', options.url);
@@ -28,13 +28,13 @@ const createRequest = (options = {}) => {
 
   xhr.load = function(event) {
 
-   try {
-     xhr.send(formData);
-     callback(null, xhr.response);
- 
-   } catch(error) {
-     callback(error, null);
- 
-   }
+    try {
+      xhr.send(formData);
+      callback(null, xhr.response);
+
+    } catch(error) {
+      callback(error, null);
+
+    }
   }
 };
