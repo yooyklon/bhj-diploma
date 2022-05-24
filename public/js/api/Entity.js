@@ -13,9 +13,10 @@ class Entity {
     let options = {
       url: this.URL,
       data: data,
-      method: 'GET'
+      method: 'GET',
+      callback: callback
     };
-    createRequest(options, callback);
+    createRequest(options);
   }
 
   /**
@@ -27,9 +28,10 @@ class Entity {
     let options = {
       url: this.URL,
       data: data,
-      method: 'PUT'
+      method: 'PUT',
+      callback: callback
     };
-    createRequest(options, callback);
+    createRequest(options);
   }
 
   /**
@@ -40,8 +42,10 @@ class Entity {
     let options = {
       url: this.URL,
       data: data,
-      method: 'DELETE'
+      method: 'DELETE',
+      callback: callback
     };
-    createRequest(options, callback);
+    createRequest(options);
   }
 }
+

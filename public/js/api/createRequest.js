@@ -3,32 +3,38 @@
  * на сервер.
  * */
 const createRequest = (options = {}) => {
- const xhr = new XMLHttpRequest();
- xhr.responseType = 'json';
+  const xhr = new XMLHttpRequest();
+  xhr.responseType = 'json';
 
- if (options.method === 'GET') {
-  const url = new URL(options.url);
+  if (options.method === 'GET') {
+    const url = new URL(options.url);
+    let keys = Object.keys(options.data);
+    for (let key of keys) {
+     url.searchParams.set(key, options.data[key]);
+    }
 
-  url.searchParams.set('mail', options.email);
-  url.searchParams.set('password', options.password);
+    xhr.open('GET', url);
+  } else {
+    const formData = formData = new FormData();
 
-  xhr.open('GET', url);
- } else {
-  const formData = formData = new FormData();
-  formData.append('mail', options.email);
-  if (options.password) {
-   formData.append('password', options.password);
+    let keys = Object.keys(options.data);
+    
+    for(let key of keys) {
+     formData.append(key, options.data[key]);
+    }
+
+    xhr.open('POST', options.url);
   }
 
-  xhr.open('POST', options.url);
- }
+  xhr.load = function(event) {
 
- try {
-  xhr.send(formData);
-  callback(null, xhr.response);
-
- } catch(error) {
-  callback(error, null);
-
- }
+   try {
+     xhr.send(formData);
+     callback(null, xhr.response);
+ 
+   } catch(error) {
+     callback(error, null);
+ 
+   }
+  }
 };
