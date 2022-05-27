@@ -26,15 +26,16 @@ const createRequest = (options = {}) => {
     xhr.open('POST', options.url);
   }
 
-  xhr.load = function(event) {
+  xhr.onload = function() {
+    callback(null, xhr.response);
+  }
 
-    try {
-      xhr.send(formData);
-      callback(null, xhr.response);
-
-    } catch(error) {
-      callback(error, null);
-
-    }
+  xhr.onerror = function() {
+    callback(xhr.response.error, null);
+  }
+  try {
+    xhr.send(formData);
+  } catch(error) {
+    throw error;
   }
 };
