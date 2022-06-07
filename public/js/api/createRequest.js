@@ -15,7 +15,7 @@ const createRequest = (options = {}) => {
 
     xhr.open('GET', url);
   } else {
-    const formData = formData = new FormData();
+    const formData = new FormData();
 
     let keys = Object.keys(options.data);
     
@@ -27,15 +27,12 @@ const createRequest = (options = {}) => {
   }
 
   xhr.onload = function() {
-    callback(null, xhr.response);
+    options.callback(null, xhr.response);
   }
-
-  xhr.onerror = function() {
-    callback(xhr.response.error, null);
-  }
+  
   try {
     xhr.send(formData);
   } catch(error) {
-    throw error;
+    options.callback(error, null);
   }
 };
