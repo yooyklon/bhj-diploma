@@ -26,13 +26,7 @@ class User {
    * из локального хранилища
    * */
   static current() {
-    let localUser = JSON.parse(localStorage.getItem('user'));
-
-    if (localUser) {
-      return localUser;
-    } else {
-      return undefined;
-    }
+    return JSON.parse(localStorage.getItem('user'));
   }
 
   /**

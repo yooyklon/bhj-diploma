@@ -23,7 +23,7 @@ const createRequest = (options = {}) => {
       formData.append(key, options.data[key]);
     }
 
-    xhr.open('POST', options.url);
+    xhr.open(options.method, options.url);
   }
 
   xhr.onload = function() {
