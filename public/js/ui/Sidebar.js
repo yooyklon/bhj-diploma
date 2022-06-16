@@ -49,7 +49,7 @@ class Sidebar {
         modal.open()
       } else if (target.closest('.menu-item_logout')) {
         User.logout(function(error, response) {
-          if (response.success = true) {
+          if (response.success) {
             App.setState('init');
           }
         })

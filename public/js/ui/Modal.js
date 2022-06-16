@@ -16,7 +16,7 @@ class Modal {
       this.element = element;
       this.registerEvents();
     } else {
-      throw new Error();
+      throw new Error('Modal element не найден!');
     }
   }
 
@@ -27,12 +27,10 @@ class Modal {
    * */
   registerEvents() {
     let closeButtons = this.element.querySelectorAll('[data-dismiss="modal"]');
-    const thisObj = this;
 
     closeButtons.forEach(elem => {
-      elem.addEventListener('click', function(event) {
+      elem.addEventListener('click', (event) => {
         event.preventDefault();
-        console.log('this: ' + thisObj + ' Modal: ' + Modal);
           thisObj.onClose();
       })
     });

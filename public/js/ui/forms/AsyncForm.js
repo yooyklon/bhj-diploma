@@ -17,7 +17,7 @@ class AsyncForm {
       this.element = element;
       this.registerEvents();
     } else {
-      throw new Error();
+      throw new Error('Form element не найден!');
     }
   }
 
@@ -26,7 +26,7 @@ class AsyncForm {
    * вызывает метод submit()
    * */
   registerEvents() {
-    this.element.addEventListener('submit', function(event) {
+    this.element.addEventListener('submit', (event) => {
       event.preventDefault();
       this.submit();
     })

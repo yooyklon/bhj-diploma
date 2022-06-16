@@ -7,32 +7,38 @@ const createRequest = (options = {}) => {
   xhr.responseType = 'json';
 
   if (options.method === 'GET') {
-    const url = new URL(options.url);
-    let keys = Object.keys(options.data);
-    for (let key of keys) {
-      url.searchParams.set(key, options.data[key]);
+    const url = new URL(options.url, location.href);
+
+    if (options.data) {
+      let keys = Object.keys(options.data);
+
+      for (let key of keys) {
+        url.searchParams.set(key, options.data[key]);
+      }
     }
 
     xhr.open('GET', url);
   } else {
     const formData = new FormData();
 
-    let keys = Object.keys(options.data);
-    
-    for(let key of keys) {
-      formData.append(key, options.data[key]);
+    if (options.data) {
+      let keys = Object.keys(options.data);
+
+      for (let key of keys) {
+        formData.append(key, options.data[key]);
+      }
     }
 
     xhr.open(options.method, options.url);
   }
 
-  xhr.onload = function() {
+  xhr.onload = function () {
     options.callback(null, xhr.response);
   }
-  
+
   try {
     xhr.send(formData);
-  } catch(error) {
+  } catch (error) {
     options.callback(error, null);
   }
 };
