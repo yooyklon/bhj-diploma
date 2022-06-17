@@ -5,6 +5,24 @@
       "email": "demo@demo",
       "password": "demo",
       "id": "1"
+    },
+    {
+      "name": "Дмитрий",
+      "email": "dvamal@mail.ru",
+      "password": "123456",
+      "id": "1k569q4l4i0bcp1"
+    },
+    {
+      "name": "Дмитрий",
+      "email": "dvamal007@mail.ru",
+      "password": "123456",
+      "id": "1k569col4i0ffef"
+    },
+    {
+      "name": "",
+      "email": "",
+      "password": "",
+      "id": "1k561esl4i0igjs"
     }
   ],
   "accounts": [
@@ -22,6 +40,21 @@
       "name": "Бизнес",
       "user_id": "1",
       "id": "3"
+    },
+    {
+      "name": "Сбербанк",
+      "user_id": "1k569q4l4i0bcp1",
+      "id": "1k5611ol4iccjxm"
+    },
+    {
+      "name": "ВТБ",
+      "user_id": "1k569q4l4i0bcp1",
+      "id": "1k568wol4id6v3o"
+    },
+    {
+      "name": "Рос банк",
+      "user_id": "1k569q4l4i0bcp1",
+      "id": "1k56a7cl4idb3m9"
     }
   ],
   "transactions": [

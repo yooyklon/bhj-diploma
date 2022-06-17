@@ -56,7 +56,7 @@ class User {
    * */
   static login(data, callback) {
     createRequest({
-      url: this.URL + '/register',
+      url: this.URL + '/login',
       method: 'POST',
       data,
       callback(err, response) {
@@ -76,7 +76,7 @@ class User {
    * */
   static register(data, callback) {
     createRequest({
-      url: this.URL + '/login',
+      url: this.URL + '/register',
       method: 'POST',
       data,
       callback(err, response) {
@@ -96,7 +96,6 @@ class User {
     createRequest({
       url: this.URL + '/logout',
       method: 'POST',
-      data,
       callback(err, response) {
         if (response.success) {
           User.unsetCurrent();
