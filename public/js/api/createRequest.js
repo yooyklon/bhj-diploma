@@ -4,6 +4,7 @@
  * */
 const createRequest = (options = {}) => {
   const xhr = new XMLHttpRequest();
+  const formData = new FormData();
   xhr.responseType = 'json';
 
   if (options.method === 'GET') {
@@ -19,7 +20,6 @@ const createRequest = (options = {}) => {
 
     xhr.open('GET', url);
   } else {
-    const formData = new FormData();
 
     if (options.data) {
       let keys = Object.keys(options.data);

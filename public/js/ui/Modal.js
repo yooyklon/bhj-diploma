@@ -31,7 +31,7 @@ class Modal {
     closeButtons.forEach(elem => {
       elem.addEventListener('click', (event) => {
         event.preventDefault();
-          thisObj.onClose();
+          this.onClose();
       })
     });
   }
