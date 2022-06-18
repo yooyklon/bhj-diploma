@@ -15,7 +15,7 @@ class UserWidget {
    if (element) {
     this.element = element;
    } else {
-    throw new Eroor('Element not found');
+    throw new Error('Element not found');
    }
   }
 

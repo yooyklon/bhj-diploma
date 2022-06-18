@@ -19,6 +19,8 @@ class AccountsWidget {
 
    this.registerEvents();
    this.update();
+  } else {
+   throw new Error('Element not found');
   }
  }
 
@@ -30,14 +32,12 @@ class AccountsWidget {
   * вызывает AccountsWidget.onSelectAccount()
   * */
  registerEvents() {
-  let modal;
 
   this.element.addEventListener('click', (event) => {
    let target = event.target;
    
    if (target.classList.contains('create-account')) {
-    modal = App.getModal('createAccount');
-    modal.open();
+    App.getModal('createAccount').open();
    }
 
    if (event.target.closest('.account')) {
@@ -58,8 +58,7 @@ class AccountsWidget {
   * */
  update() {
   if (User.current()) {
-   let list;
-   list = Account.list(User.current(), (error, response) => {
+   Account.list(null, (error, response) => {
     if (response.success) {
      this.clear();
      this.renderItem(response.data);
